@@ -11,6 +11,7 @@ import specbuilder.RequirementSpecification;
 
 
 public class E2EAutomation {
+	String productId;
 	public String token;
 	RequirementSpecification specbuilder = new RequirementSpecification();
 	RequestSpecification mylogin = specbuilder.buildRequestLoginSpecification();
@@ -43,7 +44,14 @@ public class E2EAutomation {
 	        .then()
 	        .log().all()
 	        .extract().response().as(CreateProductDeserialization.class);
-	    System.out.println(response1.getProductName());
+	    String productId = response1.getProductId();
+	    this.productId = productId;
+	}
+	//EXTRACTS THE PRODUCT ID FROM THE REQUEST FOR EXTERNAL USE!
+	@Test
+	public void getProductId() {
+		 e2e();
+		System.out.println("The productID is : "+this.productId);
 	}
 
 }

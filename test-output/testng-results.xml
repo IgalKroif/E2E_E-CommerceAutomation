@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="1" total="2" passed="1" failed="0" skipped="0">
+<testng-results ignored="2" total="3" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2023-06-28T15:14:42 IDT" name="Default suite" finished-at="2023-06-28T15:14:44 IDT" duration-ms="2424">
+  <suite started-at="2023-06-28T15:42:24 IDT" name="Default suite" finished-at="2023-06-28T15:42:27 IDT" duration-ms="2382">
     <groups>
     </groups>
-    <test started-at="2023-06-28T15:14:42 IDT" name="Default test" finished-at="2023-06-28T15:14:44 IDT" duration-ms="2424">
+    <test started-at="2023-06-28T15:42:24 IDT" name="Default test" finished-at="2023-06-28T15:42:27 IDT" duration-ms="2382">
       <class name="ecommerceautomation.tests.E2EAutomation">
-        <test-method signature="e2e()[pri:0, instance:ecommerceautomation.tests.E2EAutomation@4f8b4bd0]" started-at="2023-06-28T15:14:42 IDT" name="e2e" finished-at="2023-06-28T15:14:44 IDT" duration-ms="2400" status="PASS">
+        <test-method signature="getProductId()[pri:0, instance:ecommerceautomation.tests.E2EAutomation@4e904fd5]" started-at="2023-06-28T15:42:24 IDT" name="getProductId" finished-at="2023-06-28T15:42:27 IDT" duration-ms="2361" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- e2e -->
+        </test-method> <!-- getProductId -->
       </class> <!-- ecommerceautomation.tests.E2EAutomation -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
