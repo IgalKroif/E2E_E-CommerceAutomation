@@ -1,16 +1,29 @@
 package specbuilder;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
-import ecommerceautomation.CreateProductDeserialization;
+import org.testng.annotations.BeforeClass;
+
 import ecommerceautomation.Pojo;
+import ecommerceautomation.orderpojo.OrderDeserialization;
+import ecommerceautomation.orderpojo.Orders;
+import ecommerceautomation.tests.E2EAutomation;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
+import io.restassured.http.Header;
 import io.restassured.specification.RequestSpecification;
+
 	
 	
 public class RequirementSpecification {
+	List<Orders> orderFields  = new ArrayList<Orders>();
+	//private String productId = E2EAutomation.productId;
+	public static String productId;
+    Orders fields = new Orders(productId);
+   static OrderDeserialization orderRequest = new OrderDeserialization();
 		
 		Pojo payload = new Pojo();
 		
@@ -54,4 +67,34 @@ public class RequirementSpecification {
 
 	        return specProduct.build();
 	    }
-	}
+	    @BeforeClass
+	    public RequestSpecification orderProductSpecification() {
+	        // Initialize the orderFields list
+	        List<Orders> orderFields = new ArrayList<>();
+	        
+	        // Create and add the order object
+	        Orders order = new Orders(RequirementSpecification.productId);
+	        order.setCountry("Israel");
+	        order.setProductOrderedId(RequirementSpecification.productId);
+	        orderFields.add(order);
+	        
+	        // Create the orderRequest object and set the orderFields
+	        
+	        orderRequest.setOrders(orderFields);
+	        
+	        // Build and return the request specification
+	        RequestSpecBuilder specOrder = new RequestSpecBuilder();
+	        specOrder.setBaseUri("https://rahulshettyacademy.com")
+	                .setContentType(ContentType.JSON)
+	                .setBody(orderRequest);
+	        
+	        return specOrder.build();
+	    }
+	    public RequestSpecification deletionSpecification() {
+	    	RequestSpecBuilder deleteSpec = new RequestSpecBuilder();
+	    	deleteSpec.setBaseUri("https://rahulshettyacademy.com");
+	    	//.setAccept(ContentType.JSON)
+	    	//.setBasePath("/api/ecom/product/delete-product/");
+	    	return deleteSpec.build();
+	    }
+}
